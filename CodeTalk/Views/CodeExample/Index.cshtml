@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Models.CodeExampleModels.ExampleDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("My Profile", "Index", "Profile")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeExampleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleDiscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditedPost)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeExampleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfileId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExampleCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExampleDiscription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditedPost)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CodeExampleId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CodeExampleId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+
+    <div class="alert alert-success fade in" role="alert">
+        @ViewBag.SaveResult
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}

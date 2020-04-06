@@ -2,6 +2,7 @@
 using Models.CategoryModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,21 +15,20 @@ namespace Services
         {
             Category entity = new Category
             {
-                CategoryId = model.CategoryId,
                 CategoryName = model.CategoryName,
                 CategoryDiscription = model.CategoryDiscription
             };
 
-            using ( var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 context.Categories.Add(entity);
-               return context.SaveChanges() == 1;
+                return context.SaveChanges() == 1;
             }
         }
 
         public IEnumerable<CategoryDetail> GetCategories()
         {
-            using( var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var query =
                 context.Categories
@@ -43,9 +43,44 @@ namespace Services
             }
         }
 
-        public bool DeleteCategory(int id)
+        public CategoryDetail GetById(int id)
         {
             using(var context = new ApplicationDbContext())
+            {
+                var entity = context.Categories.Find(id);
+
+                var detail = new CategoryDetail
+                {
+                    CategoryId = entity.CategoryId,
+                    CategoryName = entity.CategoryName,
+                    CategoryDiscription = entity.CategoryDiscription
+                };
+
+                return detail;
+
+
+            }
+        }
+
+        public bool UpdateCategory(CategoryUpdate model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                    .Categories
+                    .Single(j => j.CategoryId == model.CategoryId);
+
+                entity.CategoryId = model.CategoryId;
+                entity.CategoryName = model.CategoryName;
+                entity.CategoryDiscription = model.CategoryDiscription;
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCategory(int id)
+        {
+            using (var context = new ApplicationDbContext())
             {
                 var content = context.Categories.Find(id);
                 context.Categories.Remove(content);

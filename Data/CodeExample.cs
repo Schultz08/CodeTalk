@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Models.CategoryModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,18 +15,22 @@ namespace Data
         [Key]
         public int CodeExampleId { get; set; }
         [Required]
-     //   [Column(TypeName ="VARBINARY")]
+        [MinLength(3)]
+        [MaxLength(50)]
+        public string Title { get; set; }
+        [Required]
         public string ExampleCode { get; set; }
         [Required]
         public string ExampleDiscription { get; set; }
 
         public DateTimeOffset InitialPost { get; set; }
 
-        public DateTimeOffset EditedPost { get; set; }
+        public DateTimeOffset? EditedPost { get; set; }
 
         public double AverageRating { get; set; }
 
         public virtual ICollection<Rate> Rating { get; set; }
+        public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
 
 
         [ForeignKey(nameof(Profile))]

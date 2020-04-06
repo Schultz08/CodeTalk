@@ -1,0 +1,96 @@
+﻿@model Models.CodeExampleModels.ExampleDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div>
+    <h4>ExampleDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeExampleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeExampleId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExampleCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExampleCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExampleDiscription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExampleDiscription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AverageRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AverageRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitialPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditedPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditedPost)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+     {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CodeExampleId }) |
+            @Html.ActionLink("Back to List", "Index") 
+        </div>
+     }
+</div>

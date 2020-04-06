@@ -8,6 +8,8 @@ namespace Models.CategoryModels
 {
     public class CategoryDelete
     {
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDiscription { get; set; }
     }
 }

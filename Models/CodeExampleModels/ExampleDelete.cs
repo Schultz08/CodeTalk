@@ -9,5 +9,6 @@ namespace Models.CodeExampleModels
     public class ExampleDelete
     {
         public int CodeExampleId { get; set; }
+
     }
 }

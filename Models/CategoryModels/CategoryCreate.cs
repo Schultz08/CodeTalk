@@ -8,8 +8,6 @@ namespace Models.CategoryModels
 {
     public class CategoryCreate
     {
-        public string CategoryId { get; set; }
-
         public string CategoryName { get; set; }
 
         public string CategoryDiscription { get; set; }

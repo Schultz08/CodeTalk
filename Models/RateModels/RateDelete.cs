@@ -8,6 +8,6 @@ namespace Models.RateModels
 {
     public class RateDelete
     {
-        public string RateId { get; set; }
+        public int RateId { get; set; }
     }
 }

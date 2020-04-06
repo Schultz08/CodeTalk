@@ -82,6 +82,35 @@
     <Compile Include="CodeExample.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Migrations\202004011834187_initial.cs" />
+    <Compile Include="Migrations\202004011834187_initial.designer.cs">
+      <DependentUpon>202004011834187_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021450280_Fixed Profile Annotations.cs" />
+    <Compile Include="Migrations\202004021450280_Fixed Profile Annotations.designer.cs">
+      <DependentUpon>202004021450280_Fixed Profile Annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021822055_Modified CodeExample class.cs" />
+    <Compile Include="Migrations\202004021822055_Modified CodeExample class.designer.cs">
+      <DependentUpon>202004021822055_Modified CodeExample class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021845260_Added Select Category to ExampleCreate.cs" />
+    <Compile Include="Migrations\202004021845260_Added Select Category to ExampleCreate.designer.cs">
+      <DependentUpon>202004021845260_Added Select Category to ExampleCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021946164_Made EditePost Nullable.cs" />
+    <Compile Include="Migrations\202004021946164_Made EditePost Nullable.designer.cs">
+      <DependentUpon>202004021946164_Made EditePost Nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041504162_Added Title to CodeExample and Annotations.cs" />
+    <Compile Include="Migrations\202004041504162_Added Title to CodeExample and Annotations.designer.cs">
+      <DependentUpon>202004041504162_Added Title to CodeExample and Annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041509396_Changed Annotations.cs" />
+    <Compile Include="Migrations\202004041509396_Changed Annotations.designer.cs">
+      <DependentUpon>202004041509396_Changed Annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rate.cs" />
@@ -90,6 +119,35 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004011834187_initial.resx">
+      <DependentUpon>202004011834187_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021450280_Fixed Profile Annotations.resx">
+      <DependentUpon>202004021450280_Fixed Profile Annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021822055_Modified CodeExample class.resx">
+      <DependentUpon>202004021822055_Modified CodeExample class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021845260_Added Select Category to ExampleCreate.resx">
+      <DependentUpon>202004021845260_Added Select Category to ExampleCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021946164_Made EditePost Nullable.resx">
+      <DependentUpon>202004021946164_Made EditePost Nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041504162_Added Title to CodeExample and Annotations.resx">
+      <DependentUpon>202004041504162_Added Title to CodeExample and Annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041509396_Changed Annotations.resx">
+      <DependentUpon>202004041509396_Changed Annotations.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{6A5C405A-C7C2-4655-8A28-98E326D0AE65}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

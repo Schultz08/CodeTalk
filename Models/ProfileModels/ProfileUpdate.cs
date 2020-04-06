@@ -9,13 +9,17 @@ namespace Models.ProfileModels
 {
     public class ProfileUpdate
     {
-        [Range(1, 50)]
+        public string ProfileId { get; set; }
+        [MinLength(1)]
+        [MaxLength(50)]
         public string FirstName { get; set; }
-        [Range(1, 50)]
+        [MinLength(1)]
+        [MaxLength(50)]
         public string LastName { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        [Range(3, 15)]
+        [MinLength(1)]
+        [MaxLength(50)]
         public string UserName { get; set; }
     }
 }

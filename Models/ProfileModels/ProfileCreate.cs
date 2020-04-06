@@ -9,17 +9,21 @@ namespace Models.ProfileModels
 {
     public class ProfileCreate
     {
+        public string ProfileId { get; set; }
         [Required]
-        [Range(1, 50)]
+        [MinLength(1)]
+        [MaxLength(50)]
         public string FirstName { get; set; }
         [Required]
-        [Range(1, 50)]
+        [MinLength(1)]
+        [MaxLength(50)]
         public string LastName { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [Range(3, 15)]
+        [MinLength(3)]
+        [MaxLength(15)]
         public string UserName { get; set; }
     }
 }

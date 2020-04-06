@@ -11,11 +11,11 @@ namespace Data
     public class Like
     {
         [Key]
-        public string LikeId { get; set; }
+        public int LikeId { get; set; }
         public int LikeCount { get; set; }
 
         [ForeignKey(nameof(CodeExample))]
-        public string CodeExampleId { get; set; }
+        public int CodeExampleId { get; set; }
         public virtual CodeExample CodeExample { get; set; }
 
         [ForeignKey(nameof(Profile))]

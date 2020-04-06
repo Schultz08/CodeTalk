@@ -8,7 +8,7 @@ namespace Models.CategoryModels
 {
     public class CategoryDetail
     {
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
 

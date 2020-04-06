@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{99EFCFC9-347E-4A9E-8CE2-A28DBEA2FCF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brain=code", "Brain=code\Brain=code.csproj", "{C3D30EB5-4BB5-4FCB-B0E8-341AB079A977}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTalk", "CodeTalk\CodeTalk.csproj", "{ED78ECB8-890A-4C18-8B6B-CA7261635366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{99EFCFC9-347E-4A9E-8CE2-A28DBEA2FCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99EFCFC9-347E-4A9E-8CE2-A28DBEA2FCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99EFCFC9-347E-4A9E-8CE2-A28DBEA2FCF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3D30EB5-4BB5-4FCB-B0E8-341AB079A977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3D30EB5-4BB5-4FCB-B0E8-341AB079A977}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3D30EB5-4BB5-4FCB-B0E8-341AB079A977}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3D30EB5-4BB5-4FCB-B0E8-341AB079A977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED78ECB8-890A-4C18-8B6B-CA7261635366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED78ECB8-890A-4C18-8B6B-CA7261635366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED78ECB8-890A-4C18-8B6B-CA7261635366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED78ECB8-890A-4C18-8B6B-CA7261635366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

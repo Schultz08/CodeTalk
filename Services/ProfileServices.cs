@@ -24,6 +24,7 @@ namespace Services
         {
             Profile entity = new Profile
             {
+                ProfileId = _userId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
@@ -41,7 +42,7 @@ namespace Services
                 return null;
             var model = new ProfileDetail
             {
-                ProfileId = entity.ProfileId,
+                ProfileId = _userId,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 UserName = entity.UserName,

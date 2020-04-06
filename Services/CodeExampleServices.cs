@@ -10,6 +10,13 @@ namespace Services
 {
     public class CodeExampleServices
     {
+        private readonly string _userId;
+
+        public CodeExampleServices(string userId)
+        {
+            _userId = userId;
+        }
+
         public bool CreateExample(ExampleCreate model)
         {
             using(var context = new ApplicationDbContext())
@@ -18,10 +25,12 @@ namespace Services
                 {
                     CodeExampleId = model.CodeExampleId,
                     CategoryId = model.CategoryId,
-                    ProfileId = model.ProfileId,
+                    ProfileId = _userId,
+                    Title = model.Title,
                     ExampleCode = model.ExampleCode,
                     ExampleDiscription = model.ExampleDiscription,
-                    InitialPost = DateTime.UtcNow
+                    InitialPost = DateTime.UtcNow,
+                    EditedPost = null
                 };
 
                 context.CodeExamples.Add(entity);
@@ -44,6 +53,8 @@ namespace Services
                         CodeExampleId = entity.CodeExampleId,
                         CategoryId = entity.CategoryId,
                         ProfileId = entity.ProfileId,
+                        Title = entity.Title,
+                        UserName = entity.Profile.UserName,
                         ExampleCode = entity.ExampleCode,
                         ExampleDiscription = entity.ExampleDiscription,
                         AverageRating = entity.AverageRating,
@@ -51,6 +62,64 @@ namespace Services
                         EditedPost = entity.EditedPost
 
                     };
+            }
+        }
+
+        public IEnumerable<ExampleDetail> GetAllExamples()
+        {
+            using(var context = new ApplicationDbContext())
+            {
+                var query = 
+                    context
+                    .CodeExamples
+                    .Where(j => j.CategoryId == j.CategoryId)
+                    .Select
+                    ( j => new ExampleDetail
+                    {
+                        CodeExampleId = j.CodeExampleId,
+                        ProfileId = j.ProfileId,
+                        CategoryId = j.CategoryId,
+                        Title = j.Title,
+                        UserName = j.Profile.UserName,
+                        ExampleCode = j.ExampleCode,
+                        ExampleDiscription = j.ExampleDiscription,
+                        AverageRating = j.AverageRating,
+                        InitialPost = j.InitialPost,
+                        EditedPost = j.EditedPost
+
+                    });
+
+                return query.ToArray();
+            }
+        }
+            public bool UpdateExample(ExampleUpdate model)
+            {
+                using(var context = new ApplicationDbContext())
+                {
+                var entity =
+                    context
+                    .CodeExamples
+                    .Single(j => j.CodeExampleId == model.CodeExampleId);
+
+                entity.CodeExampleId = model.CodeExampleId;
+                entity.CategoryId = model.CategoryId;
+                entity.ProfileId = model.ProfileId;
+                entity.Title = model.Title;
+                entity.ExampleCode = model.ExampleCode;
+                entity.ExampleDiscription = model.ExampleDiscription;
+                entity.EditedPost = DateTimeOffset.Now;
+
+                return context.SaveChanges() == 1;
+                }
+            }
+
+        public bool DeleteExample(int id)
+        {
+            using(var context = new ApplicationDbContext())
+            {
+                 var entity = context.CodeExamples.Single(j => j.CodeExampleId == id);
+                context.CodeExamples.Remove(entity);
+                return context.SaveChanges() == 1;
             }
         }
     }
