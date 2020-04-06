@@ -34,12 +34,19 @@ namespace Services
             _context.Profiles.Add(entity);
             return _context.SaveChanges() == 1;
         }
-        //Get By Id
-        public ProfileDetail GetByID(string id)
+        //Test to ensure the id exist if not they are redirected to index.
+        public bool GetByIdTest(string id)
         {
-           var entity = _context.Profiles.Find(id);
+            var entity = _context.Profiles.Find(id);
             if (entity == null)
-                return null;
+                return false;
+
+            return true;
+        }
+        //Get By Id
+        public ProfileDetail GetById(string id)
+        {
+            var entity = _context.Profiles.Find(id);
             var model = new ProfileDetail
             {
                 ProfileId = _userId,
@@ -53,6 +60,21 @@ namespace Services
             return model;
         }
 
+        public bool ProfileEdit(ProfileUpdate model)
+        {
+            var query =
+                _context
+                .Profiles
+                .Single(j => j.ProfileId == model.ProfileId);
+
+            query.ProfileId = model.ProfileId;
+            query.UserName = model.UserName;
+            query.FirstName = model.FirstName;
+            query.LastName = model.LastName;
+            query.Email = model.Email;
+
+            return _context.SaveChanges() == 1;
+        }
 
     }
 }

@@ -29,7 +29,7 @@ namespace Services
                     Title = model.Title,
                     ExampleCode = model.ExampleCode,
                     ExampleDiscription = model.ExampleDiscription,
-                    InitialPost = DateTime.UtcNow,
+                    InitialPost = DateTimeOffset.Now,
                     EditedPost = null
                 };
 
@@ -38,6 +38,20 @@ namespace Services
             }
         }
 
+        public bool GetByIdTest(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                     context
+                    .CodeExamples
+                    .Find(id);
+                if (entity == null)
+                    return false;
+
+                return true;
+            }
+        }
         public ExampleDetail GetById (int id)
         {
             using(var context = new ApplicationDbContext())

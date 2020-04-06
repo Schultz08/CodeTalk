@@ -30,10 +30,6 @@ namespace CodeTalk.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ExampleCreate model)
         {
-          /*  if(!ModelState.IsValid)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }*/
 
             var service = GetCodeExampleService();
 
@@ -50,16 +46,17 @@ namespace CodeTalk.Controllers
         {
             ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "CategoryName");
             var service = GetCodeExampleService();
-            var detail = service.GetById(id);
-            if(detail == null)
+            if(!service.GetByIdTest(id))
             {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+                return RedirectToAction(nameof(Index));
             }
+            var detail = service.GetById(id);
             var model = new ExampleUpdate
             {
                 CodeExampleId = detail.CodeExampleId,
                 CategoryId = detail.CategoryId,
                 ProfileId = detail.ProfileId,
+                Title = detail.Title,
                 UserName = detail.UserName,
                 ExampleCode = detail.ExampleCode,
                 ExampleDiscription = detail.ExampleDiscription,

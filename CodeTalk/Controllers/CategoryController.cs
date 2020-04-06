@@ -55,14 +55,26 @@ namespace CodeTalk.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CategoryUpdate model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+                
             var service = new CategoryServices();
-            service.UpdateCategory(model);
+
+            if(!service.UpdateCategory(model))
+            {
+                return View(model);
+            }
             return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Delete(int id)
         {
             var service = new CategoryServices();
+            if (!service.GetByIdTest(id))
+            {
+                TempData["SaveResult"] = "The item you were looking for was not found";
+                return RedirectToAction(nameof(Index));
+            }
             var detail = service.GetById(id);
             var model = new CategoryDelete
             {

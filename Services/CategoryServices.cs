@@ -43,6 +43,19 @@ namespace Services
             }
         }
 
+        public bool GetByIdTest(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity = context.Categories.Find(id);
+
+                if (entity == null)
+                    return false;
+
+                return true;
+
+            }
+        }
         public CategoryDetail GetById(int id)
         {
             using(var context = new ApplicationDbContext())
@@ -57,7 +70,6 @@ namespace Services
                 };
 
                 return detail;
-
 
             }
         }
@@ -77,7 +89,7 @@ namespace Services
                 return context.SaveChanges() == 1;
             }
         }
-
+        
         public bool DeleteCategory(int id)
         {
             using (var context = new ApplicationDbContext())
