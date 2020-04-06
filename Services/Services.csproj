@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="CodeExampleServices.cs" />
     <Compile Include="DelegateService.cs" />
+    <Compile Include="SearchService.cs" />
     <Compile Include="ProfileServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateServices.cs" />

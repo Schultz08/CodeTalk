@@ -98,6 +98,8 @@
     <Compile Include="CategoryModels\CategoryDetail.cs" />
     <Compile Include="CategoryModels\CategoryCreate.cs" />
     <Compile Include="CategoryModels\CategoryUpdate.cs" />
+    <Compile Include="Search\MasterList.cs" />
+    <Compile Include="Search\SearchFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -12,8 +12,7 @@ namespace Models.CodeExampleModels
         public int CodeExampleId { get; set; }
         public string ProfileId { get; set; }
         public int CategoryId { get; set; }
-        [MinLength(3)]
-        [MaxLength(50)]
+
         public string Title { get; set; }
         public string UserName { get; set; }
         
