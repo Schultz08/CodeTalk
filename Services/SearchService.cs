@@ -1,4 +1,7 @@
 ﻿using Data;
+using Models.CategoryModels;
+using Models.CodeExampleModels;
+using Models.ProfileModels;
 using Models.Search;
 using System;
 using System.Collections.Generic;
@@ -10,89 +13,101 @@ namespace Services
 {
     public class SearchService
     {
-        private readonly ApplicationDbContext _context;
-        public delegate IEnumerable<MasterList> GetResults(string str);
+        public delegate void GetResults(string str);
+        private readonly List<Object> _result = new List<Object>();
 
-        public IEnumerable<MasterList> SearchProfile(string str)
+        public void SearchProfile(string str)
         {
+            using(var context = new ApplicationDbContext())
+            {
 
             var query =
-                _context
+                context
                 .Profiles
                 .Where(e => e.UserName.Contains(str))
-                .Select(profile => new MasterList
+                .Select(profile => new ProfileDetail
                 {
                     ProfileId = profile.ProfileId,
                     UserName = profile.UserName,
-                    PostCount = profile.UserRating.Count
-                });
+                }).ToList();
 
-            return query.ToArray();
+            _result.Add(query);
+            }
         }
 
-        public IEnumerable<MasterList> SearchCategory(string str)
+        public void SearchCategory(string str)
         {
+            using (var context = new ApplicationDbContext())
+            {
+
             var query =
-                _context
+                context
                 .Categories
                 .Where(e => e.CategoryName.Contains(str))
-                .Select(category => new MasterList
+                .Select(category => new CategoryDetail
                 {
                     CategoryId = category.CategoryId,
                     CategoryName = category.CategoryName,
                     CategoryDiscription = category.CategoryDiscription
-                });
-            return query.ToArray();
+                }).ToList();
+
+            _result.Add(query);
+
+            }
         }
-        public IEnumerable<MasterList> SearchExample(string str)
+        public void SearchExample(string str)
         {
+            using (var context = new ApplicationDbContext())
+            {
+
             var query =
-                _context
+                context
                 .CodeExamples
                 .Where(e => e.Title.Contains(str))
-                .Select(example => new MasterList
+                .Select(example => new ExampleDetail
                 {
                     CodeExampleId = example.CodeExampleId,
                     ProfileId = example.ProfileId,
                     CategoryId = example.CategoryId,
                     UserName = example.Profile.UserName,
-                    ExampleTitle = example.Title,
+                    Title = example.Title,
                     ExampleDiscription = example.ExampleDiscription,
                     InitialPost = example.InitialPost,
                     EditedPost = example.EditedPost
-                }).ToArray();
-            return query;
+                }).ToList();
+
+            _result.Add(query);
+            }
         }
 
 
-        public IEnumerable<MasterList> AdvanceSearch(string str, SearchFilter model)
+        public List<Object> AdvanceSearch(SearchFilter model)
         {
             GetResults list = null;
             if (model.SearchProfile == true)
             {
                 list += SearchProfile;
             }
-            if (model.SearchCodeExample == true)
-            {
-                list += SearchExample;
-            }
             if (model.SearchCategory == true)
             {
                 list += SearchCategory;
             }
+            if (model.SearchCodeExample == true)
+            {
+                list += SearchExample;
+            }
+            list.Invoke(model.SearchRequest);
 
-            return list(str);
+            return _result;
+
         }
-        public IEnumerable<MasterList> GetSearch(string str)
+       /* public IEnumerable<MasterList> GetSearch(SearchString str)
         {
             GetResults list = null;
-                list += SearchProfile;
-
                 list += SearchExample;
 
-                list += SearchCategory;
-            return list(str);
-        }
+            return list(str.SearchRequest);
+        }*/
 
 
     }

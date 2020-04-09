@@ -28,5 +28,7 @@ namespace Models.Search
         public string CategoryName { get; set; }
       
         public string CategoryDiscription { get; set; }
+
+        public string SearchRequest { get; set; }
     }
 }

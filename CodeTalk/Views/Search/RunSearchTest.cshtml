@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Models.Search.MasterList>
+
+@{
+    ViewBag.Title = "RunSearchTest";
+}
+
+<h2>RunSearchTest</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeExampleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleDiscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditedPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDiscription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProfileId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeExampleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExampleTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExampleDiscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitialPost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditedPost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDiscription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

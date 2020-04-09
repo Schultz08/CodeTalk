@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Models.Search
 {
-    public class SearchFilter
+    public class SearchString
     {
-        public bool SearchProfile { get; set; }
-        public bool SearchCategory { get; set; }
-        public bool SearchCodeExample { get; set; }
-
         public string SearchRequest { get; set; }
     }
 }

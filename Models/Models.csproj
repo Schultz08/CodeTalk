@@ -100,6 +100,8 @@
     <Compile Include="CategoryModels\CategoryUpdate.cs" />
     <Compile Include="Search\MasterList.cs" />
     <Compile Include="Search\SearchFilter.cs" />
+    <Compile Include="Search\SearchResults.cs" />
+    <Compile Include="Search\SearchString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,0 +1,248 @@
+﻿@model List<Object>
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("My Profile", "Index", "Profile")
+</p>
+@*<tr>
+        <th>
+            @Html.DisplayNameFor(model => )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfileId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExampleDiscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditedPost)
+        </th>
+        <th></th>
+    </tr>*@
+
+<!--
+<table class="table">
+
+-->
+@*@foreach (var result in Model)
+    {
+        List<Models.CategoryModels.CategoryDetail> categoryItems = new List<Models.CategoryModels.CategoryDetail>();
+        List<Models.ProfileModels.ProfileDetail> profileItems = new List<Models.ProfileModels.ProfileDetail>();
+        List<Models.CodeExampleModels.ExampleDetail> exampleItems = new List<Models.CodeExampleModels.ExampleDetail>();
+
+        if (result is Models.CategoryModels.CategoryDetail)
+        {
+
+            categoryItems.Add((Models.CategoryModels.CategoryDetail)result);
+
+        }
+
+        if (result is Models.ProfileModels.ProfileDetail)
+        {
+            profileItems.Add((Models.ProfileModels.ProfileDetail)result);
+        }
+
+        if (result is Models.CodeExampleModels.ExampleDetail)
+        {
+            exampleItems.Add((Models.CodeExampleModels.ExampleDetail)result);
+        }
+
+        foreach (var item in categoryItems)
+        {
+            <tbody>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDiscription)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                </td>
+            </tr>
+            </tbody>
+        }
+
+
+        foreach (var item in exampleItems)
+        {
+            <tbody>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeExampleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExampleDiscription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditedPost)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CodeExampleId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodeExampleId })
+                </td>
+            </tr>
+            </tbody>
+        }
+
+        foreach (var item in profileItems)
+        {
+            <tbody>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProfileId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProfileId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProfileId })
+                </td>
+            </tr>
+            </tbody>
+    }
+        }*@
+for
+@foreach (var result in Model)
+{
+    foreach (var items in result as IEnumerable<object>)
+    {
+
+
+
+        if (items is Models.CategoryModels.CategoryDetail categoryDetail)
+        {
+            @*
+                var item = (Models.CategoryModels.CategoryDetail)result;
+            *@
+            <table>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => categoryDetail.CategoryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => categoryDetail.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => categoryDetail.CategoryDiscription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = categoryDetail.CategoryId }) |
+                        @Html.ActionLink("Details", "Details", new { id = categoryDetail.CategoryId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = categoryDetail.CategoryId })
+                    </td>
+                </tr>
+            </table>
+        }
+        if (items is Models.CodeExampleModels.ExampleDetail exampleDetail)
+        {
+
+            <table>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.CodeExampleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.ProfileId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.CategoryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.ExampleDiscription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.InitialPost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => exampleDetail.EditedPost)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = exampleDetail.CodeExampleId }) |
+                        @Html.ActionLink("Details", "Details", new { id = exampleDetail.CodeExampleId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = exampleDetail.CodeExampleId })
+                    </td>
+                </tr>
+            </table>
+        }
+        if (items is Models.ProfileModels.ProfileDetail profileDetail)
+        {
+            <table>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => profileDetail.ProfileId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => profileDetail.UserName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = profileDetail.ProfileId }) |
+                        @Html.ActionLink("Details", "Details", new { id = profileDetail.ProfileId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = profileDetail.ProfileId })
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+}
+
+<!--
+</table>
+    -->
