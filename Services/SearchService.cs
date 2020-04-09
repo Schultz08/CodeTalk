@@ -69,6 +69,7 @@ namespace Services
                     CodeExampleId = example.CodeExampleId,
                     ProfileId = example.ProfileId,
                     CategoryId = example.CategoryId,
+                    CategoryName = example.Category.CategoryName,
                     UserName = example.Profile.UserName,
                     Title = example.Title,
                     ExampleDiscription = example.ExampleDiscription,
@@ -99,16 +100,6 @@ namespace Services
             list.Invoke(model.SearchRequest);
 
             return _result;
-
         }
-       /* public IEnumerable<MasterList> GetSearch(SearchString str)
-        {
-            GetResults list = null;
-                list += SearchExample;
-
-            return list(str.SearchRequest);
-        }*/
-
-
     }
 }

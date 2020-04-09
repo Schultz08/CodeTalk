@@ -14,15 +14,15 @@ namespace Models.CodeExampleModels
 
         public string ProfileId { get; set; }
 
+        [Display(Name ="Category Type")]
         public int CategoryId { get; set; }
-        //  public List<CategoryList> Category { get; set; } = new List<CategoryList>(); 
 
         [MinLength(3)]
         [MaxLength(50)]
         public string Title { get; set; }
 
         public string ExampleCode { get; set; }
-
+        [Display(Name = "Explain your code to your readers.")]
         public string ExampleDiscription { get; set; }
 
         public DateTimeOffset TimeStamp { get; set; }

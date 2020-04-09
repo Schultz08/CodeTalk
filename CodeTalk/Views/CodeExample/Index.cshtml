@@ -10,6 +10,18 @@
     @Html.ActionLink("Create New", "Create")
     @Html.ActionLink("My Profile", "Index", "Profile")
 </p>
+<div>
+    @using (Html.BeginForm("DefualtSearch", "Search"))
+    {
+        <ul>
+            <li>
+                <input type="text" name="searchString" />
+                <input type="submit" value="Search" />
+            </li>
+            <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
+        </ul>
+    }
+</div>
 <table class="table">
     <tr>
         <th>

@@ -24,7 +24,7 @@ namespace CodeTalk.Controllers
 
             return RedirectToAction("SearchResults");
         }
-
+        [HttpGet]
         public ActionResult SearchResults()
         {
             var model = TempData["SearchModel"] as SearchFilter;
@@ -36,29 +36,47 @@ namespace CodeTalk.Controllers
 
             if (result == null)
                 return View(model);
-            //  ViewData["Result"] = result;
-           // ViewBag.Results = result;
+
             return View(result);
         }
 
-      /*  public ActionResult SearchTest()
+        
+        [HttpGet]
+        public ActionResult DefualtIndex(string searchString)
         {
-            return View();
+            if (string.IsNullOrWhiteSpace(searchString) || string.IsNullOrEmpty(searchString))
+            {
+                Response.Redirect(Request.UrlReferrer.ToString());
+                return View();
+            }
+
+            TempData["SearchString"] = searchString;
+
+            return RedirectToAction("DefualtSearch");
         }
-        [HttpPost]
-        public ActionResult SearchTest(SearchString str)
+        public ActionResult DefualtSearch(string searchString)
         {
-           TempData["SearchModel"] = str;
+            //var searchString = TempData["SearchString"] as string;
+
+            var model = new SearchFilter
+            {
+                SearchCategory = true,
+                SearchCodeExample = true,
+                SearchProfile = true,
+                SearchRequest = searchString
+            };
             
-            return RedirectToAction("RunSearchTest");
-        }
-
-        public ActionResult RunSearchTest()
-        {
-            var model = TempData["SearchModel"] as SearchString;
             var service = new SearchService();
-            var result = service.GetSearch(model);
-            return View(result);
-        }*/
+
+            var result = service.AdvanceSearch(model);
+
+            if(result == null)
+            {
+                Response.Redirect(Request.UrlReferrer.ToString());
+                return View();
+            }
+
+            return View("SearchResults", result);
+        }
     }
 }

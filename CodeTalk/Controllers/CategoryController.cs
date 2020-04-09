@@ -95,10 +95,14 @@ namespace CodeTalk.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       /* public CategoryServices GetService()
+        public ActionResult GetSearch(string stringSearch)
         {
-            var service = new CategoryServices();
-            return service;
-        }*/
+            if (string.IsNullOrEmpty(stringSearch) || string.IsNullOrWhiteSpace(stringSearch))
+                return View();
+
+            TempData["SearchString"] = stringSearch;
+
+            return RedirectToAction("DefualtSearch", "Search", stringSearch);
+        }
     }
 }

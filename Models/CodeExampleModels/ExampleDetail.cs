@@ -10,10 +10,15 @@ namespace Models.CodeExampleModels
     public class ExampleDetail
     {
         public int CodeExampleId { get; set; }
+
         public string ProfileId { get; set; }
+
         public int CategoryId { get; set; }
 
+        public string CategoryName { get; set; }
+
         public string Title { get; set; }
+
         public string UserName { get; set; }
         
         public string ExampleCode { get; set; }

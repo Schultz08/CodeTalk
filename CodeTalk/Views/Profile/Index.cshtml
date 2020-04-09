@@ -8,6 +8,18 @@
 
 <div>
     <h4>ProfileDetail</h4>
+    <div>
+        @using (Html.BeginForm("DefualtSearch", "Search"))
+        {
+            <ul>
+                <li>
+                    <input type="text" name="searchString" />
+                    <input type="submit" value="Search" />
+                </li>
+                <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
+            </ul>
+        }
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
