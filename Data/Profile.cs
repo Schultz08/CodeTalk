@@ -28,9 +28,7 @@ namespace Data
         [MaxLength(15)]
         public string UserName { get; set; }
 
-        public double AverageRating { get; set; }
-
-        public virtual ICollection<CodeExample> UserRating { get; set; }
+        public virtual ICollection<CodeExample> UserTotalLike { get; set; }
 
         [ForeignKey(nameof(User))]
         public string UserID { get; set; }

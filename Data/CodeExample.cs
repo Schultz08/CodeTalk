@@ -27,9 +27,7 @@ namespace Data
 
         public DateTimeOffset? EditedPost { get; set; }
 
-        public double AverageRating { get; set; }
-
-        public virtual ICollection<Rate> Rating { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
         public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
 
 

@@ -54,7 +54,6 @@ namespace Services
                 LastName = entity.LastName,
                 UserName = entity.UserName,
                 Email = entity.Email,
-                AverageRating = entity.AverageRating
             };
 
             return model;
@@ -74,6 +73,20 @@ namespace Services
             query.Email = model.Email;
 
             return _context.SaveChanges() == 1;
+        }
+
+        //A User can not delete their profile but they can delete their entire account.
+        public bool DeleteAccount(string id)
+        {
+            var entity = _context.Users.Find(id);
+
+            if (entity == null)
+                return false;
+
+           _context.Users.Remove(entity);
+
+            return _context.SaveChanges() == 1;
+
         }
 
     }

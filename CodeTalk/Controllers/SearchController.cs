@@ -40,23 +40,13 @@ namespace CodeTalk.Controllers
             return View(result);
         }
 
-        
-        [HttpGet]
-        public ActionResult DefualtIndex(string searchString)
+        public ActionResult DefualtSearch(string searchString)
         {
             if (string.IsNullOrWhiteSpace(searchString) || string.IsNullOrEmpty(searchString))
             {
                 Response.Redirect(Request.UrlReferrer.ToString());
                 return View();
             }
-
-            TempData["SearchString"] = searchString;
-
-            return RedirectToAction("DefualtSearch");
-        }
-        public ActionResult DefualtSearch(string searchString)
-        {
-            //var searchString = TempData["SearchString"] as string;
 
             var model = new SearchFilter
             {

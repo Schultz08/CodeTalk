@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CodeTalk.Models;
 using Data;
+using Services;
 
 namespace CodeTalk.Controllers
 {
@@ -401,6 +402,19 @@ namespace CodeTalk.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
+            return View();
+        }
+
+        public ActionResult Delete(string id)
+        {
+            var service = new ProfileServices(id);
+
+            if(service.DeleteAccount(id))
+            {
+                return RedirectToAction("LogOff");
+            }
+
+            Response.Redirect(Request.UrlReferrer.ToString());
             return View();
         }
 

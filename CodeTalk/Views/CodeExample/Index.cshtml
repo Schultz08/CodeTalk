@@ -13,7 +13,7 @@
 <div>
     @using (Html.BeginForm("DefualtSearch", "Search"))
     {
-        <ul>
+        <ul class="nav navbar-nav">
             <li>
                 <input type="text" name="searchString" />
                 <input type="submit" value="Search" />
@@ -25,25 +25,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CodeExampleId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProfileId)
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ExampleCode)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ExampleDiscription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageRating)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InitialPost)
@@ -57,26 +51,23 @@
     @foreach (var item in Model)
     {
         <tr>
+                @Html.HiddenFor(modelItem => item.CodeExampleId)
             <td>
-                @Html.DisplayFor(modelItem => item.CodeExampleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProfileId)
+                @Html.HiddenFor(modelItem => item.ProfileId)
+                @Html.DisplayFor(modelitem => item.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
+                @Html.HiddenFor(modelItem => item.CategoryId)
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExampleCode)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExampleDiscription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AverageRating)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InitialPost)

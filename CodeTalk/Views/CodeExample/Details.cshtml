@@ -1,45 +1,29 @@
 ﻿@model Models.CodeExampleModels.ExampleDetail
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
 <div>
     <h4>ExampleDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CodeExampleId)
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodeExampleId)
+            @Html.DisplayFor(model => model.UserName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProfileId)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProfileId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
 
         <dt>
@@ -75,14 +59,8 @@
         </dd>
 
     </dl>
-    @using (Html.BeginForm())
-     {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Edit", "Edit", new { id = Model.CodeExampleId }) |
-            @Html.ActionLink("Back to List", "Index") 
-        </div>
-     }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

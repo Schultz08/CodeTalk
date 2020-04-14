@@ -38,10 +38,36 @@ namespace CodeTalk.Controllers
             return View();
         }
 
-        public  ActionResult Edit(int id)
+        public ActionResult Detail(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var service = new CategoryServices();
-            var detail = service.GetById(id);
+
+            if(service.GetById((int)id) == null)
+            {
+                return View();
+            }
+            var model = service.GetById((int)id);
+        
+            return View(model);
+        }
+
+        public  ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var service = new CategoryServices();
+
+            if(service.GetById((int)id) == null)
+            {
+                return View();
+            }
+            var detail = service.GetById((int)id);
             var model = new CategoryUpdate
             {
                 CategoryId = detail.CategoryId,

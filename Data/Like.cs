@@ -12,7 +12,6 @@ namespace Data
     {
         [Key]
         public int LikeId { get; set; }
-        public int LikeCount { get; set; }
 
         [ForeignKey(nameof(CodeExample))]
         public int CodeExampleId { get; set; }

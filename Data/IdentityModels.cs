@@ -28,7 +28,6 @@ namespace Data
         public DbSet<CodeExample> CodeExamples { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Rate> Ratings { get; set; }
 
 
         public static ApplicationDbContext Create()

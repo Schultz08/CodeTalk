@@ -69,9 +69,9 @@ namespace Services
                         ProfileId = entity.ProfileId,
                         Title = entity.Title,
                         UserName = entity.Profile.UserName,
+                        CategoryName = entity.Category.CategoryName,
                         ExampleCode = entity.ExampleCode,
                         ExampleDiscription = entity.ExampleDiscription,
-                        AverageRating = entity.AverageRating,
                         InitialPost = entity.InitialPost,
                         EditedPost = entity.EditedPost
 
@@ -95,9 +95,9 @@ namespace Services
                         CategoryId = j.CategoryId,
                         Title = j.Title,
                         UserName = j.Profile.UserName,
+                        CategoryName = j.Category.CategoryName,
                         ExampleCode = j.ExampleCode,
                         ExampleDiscription = j.ExampleDiscription,
-                        AverageRating = j.AverageRating,
                         InitialPost = j.InitialPost,
                         EditedPost = j.EditedPost
 
@@ -132,7 +132,11 @@ namespace Services
             using(var context = new ApplicationDbContext())
             {
                  var entity = context.CodeExamples.Single(j => j.CodeExampleId == id);
+                if (entity == null)
+                    return false;
+
                 context.CodeExamples.Remove(entity);
+
                 return context.SaveChanges() == 1;
             }
         }

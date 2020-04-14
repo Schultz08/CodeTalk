@@ -53,7 +53,6 @@ namespace Services
                     return false;
 
                 return true;
-
             }
         }
         public CategoryDetail GetById(int id)
@@ -62,6 +61,8 @@ namespace Services
             {
                 var entity = context.Categories.Find(id);
 
+                if (entity == null)
+                    return null;
                 var detail = new CategoryDetail
                 {
                     CategoryId = entity.CategoryId,

@@ -14,16 +14,20 @@ namespace Models.CodeExampleModels
         public string ProfileId { get; set; }
 
         public int CategoryId { get; set; }
+        [Display(Name = "Category Type")]
 
         public string CategoryName { get; set; }
 
         [MinLength(3)]
         [MaxLength(50)]
         public string Title { get; set; }
-        public string UserName { get; set; }
-        
-        public string ExampleCode { get; set; }
 
+        public string UserName { get; set; }
+        [Display(Name = "Edit your Example Code")]
+
+        public string ExampleCode { get; set; }
+       
+        [Display(Name = "Discrib what your code is doing and What you changed")]
         public string ExampleDiscription { get; set; }
 
         public DateTimeOffset? EditedPost { get; set; }

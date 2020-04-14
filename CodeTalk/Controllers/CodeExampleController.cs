@@ -21,6 +21,17 @@ namespace CodeTalk.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var service = GetCodeExampleService();
+
+            var detail = service.GetById(id);
+            if (detail == null)
+                return View();
+
+            return View(detail);
+        }
+
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "CategoryName");

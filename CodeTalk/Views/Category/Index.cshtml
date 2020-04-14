@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Models.CategoryModels.CategoryDetail>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Category";
 }
 
-<h2>Index</h2>
+<h2>All Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,7 @@
 <div>
     @using (Html.BeginForm("DefualtSearch", "Search"))
     {
-        <ul>
+        <ul class="nav navbar-nav">
             <li>
                 <input type="text" name="searchString" />
                 <input type="submit" value="Search" />
@@ -24,38 +24,43 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CategoryDiscription)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryDiscription)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryName)
+    </td>
+    <td>
+        @try
+        {
+            @item.CategoryDiscription.Substring(0, 10)
+        }
+        catch
+        {
+        @Html.DisplayFor(modelItem => item.CategoryDiscription)
+
+        }
+
+
+
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+        @Html.ActionLink("Details", "Detail", new { id = item.CategoryId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+    </td>
+</tr>
     }
 
 </table>
+
 
 @if (TempData.ContainsKey("SaveResult"))
 {
