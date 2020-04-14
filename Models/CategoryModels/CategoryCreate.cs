@@ -12,7 +12,7 @@ namespace Models.CategoryModels
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
         
-        [Display(Name = "Category Discription")]
-        public string CategoryDiscription { get; set; }
+        [Display(Name = "Category Description")]
+        public string CategoryDescription { get; set; }
     }
 }

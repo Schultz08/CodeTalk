@@ -22,6 +22,6 @@ namespace Models.CodeExampleModels
 
         public string UserName { get; set; }
 
-        public string ExampleDiscription { get; set; }
+        public string ExampleDescription { get; set; }
     }
 }

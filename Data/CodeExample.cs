@@ -21,7 +21,7 @@ namespace Data
         [Required]
         public string ExampleCode { get; set; }
         [Required]
-        public string ExampleDiscription { get; set; }
+        public string ExampleDescription { get; set; }
 
         public DateTimeOffset InitialPost { get; set; }
 

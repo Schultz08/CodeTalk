@@ -16,7 +16,7 @@ namespace Services
             Category entity = new Category
             {
                 CategoryName = model.CategoryName,
-                CategoryDiscription = model.CategoryDiscription
+                CategoryDescription = model.CategoryDescription
             };
 
             using (var context = new ApplicationDbContext())
@@ -37,7 +37,7 @@ namespace Services
                     {
                         CategoryId = j.CategoryId,
                         CategoryName = j.CategoryName,
-                        CategoryDiscription = j.CategoryDiscription
+                        CategoryDescription = j.CategoryDescription
                     });
                 return query.ToArray();
             }
@@ -67,7 +67,7 @@ namespace Services
                 {
                     CategoryId = entity.CategoryId,
                     CategoryName = entity.CategoryName,
-                    CategoryDiscription = entity.CategoryDiscription
+                    CategoryDescription = entity.CategoryDescription
                 };
 
                 return detail;
@@ -86,7 +86,7 @@ namespace Services
 
                 entity.CategoryId = model.CategoryId;
                 entity.CategoryName = model.CategoryName;
-                entity.CategoryDiscription = model.CategoryDiscription;
+                entity.CategoryDescription = model.CategoryDescription;
                 return context.SaveChanges() == 1;
             }
         }

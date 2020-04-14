@@ -88,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeExampleServices.cs" />
-    <Compile Include="DelegateService.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="SearchService.cs" />
     <Compile Include="ProfileServices.cs" />

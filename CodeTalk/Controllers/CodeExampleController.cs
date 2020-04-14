@@ -70,7 +70,7 @@ namespace CodeTalk.Controllers
                 Title = detail.Title,
                 UserName = detail.UserName,
                 ExampleCode = detail.ExampleCode,
-                ExampleDiscription = detail.ExampleDiscription,
+                ExampleDescription = detail.ExampleDescription,
             };
             return View(model);
         }

@@ -48,7 +48,7 @@ namespace Services
                 {
                     CategoryId = category.CategoryId,
                     CategoryName = category.CategoryName,
-                    CategoryDiscription = category.CategoryDiscription
+                    CategoryDescription = category.CategoryDescription
                 }).ToList();
 
             _result.Add(query);
@@ -72,7 +72,7 @@ namespace Services
                     CategoryName = example.Category.CategoryName,
                     UserName = example.Profile.UserName,
                     Title = example.Title,
-                    ExampleDiscription = example.ExampleDiscription,
+                    ExampleDescription = example.ExampleDescription,
                     InitialPost = example.InitialPost,
                     EditedPost = example.EditedPost
                 }).ToList();

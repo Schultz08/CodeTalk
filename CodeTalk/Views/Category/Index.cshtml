@@ -27,36 +27,36 @@
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryDiscription)
+            @Html.DisplayNameFor(model => model.CategoryDescription)
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CategoryName)
-    </td>
-    <td>
-        @try
-        {
-            @item.CategoryDiscription.Substring(0, 10)
-        }
-        catch
-        {
-        @Html.DisplayFor(modelItem => item.CategoryDiscription)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @try
+                {
+                    @item.CategoryDescription.Substring(0, 10)
+                }
+                catch
+                {
+                    @Html.DisplayFor(modelItem => item.CategoryDescription)
 
-        }
+                }
 
 
 
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-        @Html.ActionLink("Details", "Detail", new { id = item.CategoryId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
-    </td>
-</tr>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                @Html.ActionLink("Details", "Detail", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+            </td>
+        </tr>
     }
 
 </table>

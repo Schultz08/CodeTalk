@@ -72,7 +72,7 @@ namespace CodeTalk.Controllers
             {
                 CategoryId = detail.CategoryId,
                 CategoryName = detail.CategoryName,
-                CategoryDiscription = detail.CategoryDiscription
+                CategoryDescription = detail.CategoryDescription
             };
             return View(model);
         }
@@ -106,7 +106,7 @@ namespace CodeTalk.Controllers
             {
                 CategoryId = detail.CategoryId,
                 CategoryName = detail.CategoryName,
-                CategoryDiscription = detail.CategoryDiscription
+                CategoryDescription = detail.CategoryDescription
             };
             return View(model);
         }

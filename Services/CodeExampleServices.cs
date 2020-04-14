@@ -28,7 +28,7 @@ namespace Services
                     ProfileId = _userId,
                     Title = model.Title,
                     ExampleCode = model.ExampleCode,
-                    ExampleDiscription = model.ExampleDiscription,
+                    ExampleDescription = model.ExampleDescription,
                     InitialPost = DateTimeOffset.Now,
                     EditedPost = null
                 };
@@ -71,7 +71,7 @@ namespace Services
                         UserName = entity.Profile.UserName,
                         CategoryName = entity.Category.CategoryName,
                         ExampleCode = entity.ExampleCode,
-                        ExampleDiscription = entity.ExampleDiscription,
+                        ExampleDescription = entity.ExampleDescription,
                         InitialPost = entity.InitialPost,
                         EditedPost = entity.EditedPost
 
@@ -97,7 +97,7 @@ namespace Services
                         UserName = j.Profile.UserName,
                         CategoryName = j.Category.CategoryName,
                         ExampleCode = j.ExampleCode,
-                        ExampleDiscription = j.ExampleDiscription,
+                        ExampleDescription = j.ExampleDescription,
                         InitialPost = j.InitialPost,
                         EditedPost = j.EditedPost
 
@@ -120,7 +120,7 @@ namespace Services
                 entity.ProfileId = model.ProfileId;
                 entity.Title = model.Title;
                 entity.ExampleCode = model.ExampleCode;
-                entity.ExampleDiscription = model.ExampleDiscription;
+                entity.ExampleDescription = model.ExampleDescription;
                 entity.EditedPost = DateTimeOffset.Now;
 
                 return context.SaveChanges() == 1;

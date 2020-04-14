@@ -14,7 +14,7 @@ namespace Data
         [Required]
         public string CategoryName { get; set; }
         [Required]
-        public string CategoryDiscription { get; set; }
+        public string CategoryDescription { get; set; }
 
     }
 }

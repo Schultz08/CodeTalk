@@ -10,12 +10,12 @@ namespace Models.CategoryModels
     public class CategoryDetail
     {
         public int CategoryId { get; set; }
+       
         [Display(Name="Category Name")]
         public string CategoryName { get; set; }
+       
         [DataType(DataType.MultilineText)]
-        [Display(Name="Category Discription")]
-        public string CategoryDiscription { get; set; }
-
-        public bool ViewDiscription { get; set; }
+        [Display(Name="Category Description")]
+        public string CategoryDescription { get; set; }
     }
 }

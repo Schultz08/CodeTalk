@@ -24,7 +24,7 @@ namespace Models.CodeExampleModels
         [Display(Name = "Show off your awsome code!")]
         public string ExampleCode { get; set; }
         [Display(Name = "Explain your code in your own words!")]
-        public string ExampleDiscription { get; set; }
+        public string ExampleDescription { get; set; }
 
         public DateTimeOffset TimeStamp { get; set; }
 

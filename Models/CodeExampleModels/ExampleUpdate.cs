@@ -27,8 +27,8 @@ namespace Models.CodeExampleModels
 
         public string ExampleCode { get; set; }
        
-        [Display(Name = "Discrib what your code is doing and What you changed")]
-        public string ExampleDiscription { get; set; }
+        [Display(Name = "Describ what your code is doing and What you changed")]
+        public string ExampleDescription { get; set; }
 
         public DateTimeOffset? EditedPost { get; set; }
 

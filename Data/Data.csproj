@@ -120,6 +120,10 @@
     <Compile Include="Migrations\202004131652314_Removed Rate for UpVote.designer.cs">
       <DependentUpon>202004131652314_Removed Rate for UpVote.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004141915547_Fixed Spelling Error.cs" />
+    <Compile Include="Migrations\202004141915547_Fixed Spelling Error.designer.cs">
+      <DependentUpon>202004141915547_Fixed Spelling Error.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131652314_Removed Rate for UpVote.resx">
       <DependentUpon>202004131652314_Removed Rate for UpVote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004141915547_Fixed Spelling Error.resx">
+      <DependentUpon>202004141915547_Fixed Spelling Error.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

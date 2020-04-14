@@ -20,19 +20,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryDiscription)
+            @Html.DisplayNameFor(model => model.CategoryDescription)
         </dt>
 
         <dd>
             @try
             {
-                @Html.Post25(Model.CategoryDiscription)
+                @Html.Post25(Model.CategoryDescription)
             }
             catch
             {
-                @Html.DisplayNameFor(model => model.CategoryDiscription)
+                @Html.DisplayNameFor(model => model.CategoryDescription)
             }
-          
+
         </dd>
 
     </dl>

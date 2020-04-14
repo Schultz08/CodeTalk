@@ -26,8 +26,8 @@ namespace Models.CodeExampleModels
         [Display(Name = "Snipet of Code")]
         public string ExampleCode { get; set; }
         
-        [Display(Name = "Code Discription")]
-        public string ExampleDiscription { get; set; }
+        [Display(Name = "Code Description")]
+        public string ExampleDescription { get; set; }
         
         [Display(Name = "Initial Post Date")]
         public DateTimeOffset InitialPost { get; set; }

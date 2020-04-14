@@ -84,7 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryModels\CategoryList.cs" />
     <Compile Include="CodeExampleModels\ExampleDelete.cs" />
     <Compile Include="CodeExampleModels\ExampleDetail.cs" />
     <Compile Include="CodeExampleModels\ExampleCreate.cs" />
