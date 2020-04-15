@@ -18,15 +18,17 @@ namespace Models.CodeExampleModels
 
         public string CategoryName { get; set; }
 
+        [Required]
         [MinLength(3)]
         [MaxLength(50)]
         public string Title { get; set; }
 
         public string UserName { get; set; }
-        [Display(Name = "Edit your Example Code")]
 
+        [Required]
+        [Display(Name = "Edit your Example Code")]
         public string ExampleCode { get; set; }
-       
+        [Required]
         [Display(Name = "Describ what your code is doing and What you changed")]
         public string ExampleDescription { get; set; }
 

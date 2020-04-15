@@ -24,6 +24,13 @@ namespace CodeTalk.Controllers
 
         public ActionResult Create()
         {
+            var userId = User.Identity.GetUserId();
+
+            var service = GetProfileService();
+
+            if (service.GetById(userId) != null)
+                return RedirectToAction(nameof(Index));
+
             return View();
         }
 

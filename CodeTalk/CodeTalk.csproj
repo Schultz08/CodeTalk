@@ -371,6 +371,7 @@
     <Content Include="Views\CodeExample\Details.cshtml" />
     <Content Include="Views\Category\Detail.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\CodeExample\UserCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

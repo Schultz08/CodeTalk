@@ -86,7 +86,7 @@ namespace Services
                 var query = 
                     context
                     .CodeExamples
-                    .Where(j => j.CategoryId == j.CategoryId)
+                    .Where(j => j.CodeExampleId == j.CodeExampleId)
                     .Select
                     ( j => new ExampleDetail
                     {
@@ -106,7 +106,35 @@ namespace Services
                 return query.ToArray();
             }
         }
-            public bool UpdateExample(ExampleUpdate model)
+
+        public IEnumerable<ExampleDetail> GetAllExamplesByUserId(string id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query =
+                    context
+                    .CodeExamples
+                    .Where(j => j.ProfileId == id)
+                    .Select
+                    (j => new ExampleDetail
+                    {
+                        CodeExampleId = j.CodeExampleId,
+                        ProfileId = j.ProfileId,
+                        CategoryId = j.CategoryId,
+                        Title = j.Title,
+                        UserName = j.Profile.UserName,
+                        CategoryName = j.Category.CategoryName,
+                        ExampleCode = j.ExampleCode,
+                        ExampleDescription = j.ExampleDescription,
+                        InitialPost = j.InitialPost,
+                        EditedPost = j.EditedPost
+
+                    });
+
+                return query.ToArray();
+            }
+        }
+        public bool UpdateExample(ExampleUpdate model)
             {
                 using(var context = new ApplicationDbContext())
                 {

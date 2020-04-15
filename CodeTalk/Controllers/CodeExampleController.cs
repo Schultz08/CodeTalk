@@ -21,6 +21,20 @@ namespace CodeTalk.Controllers
             return View(model);
         }
 
+        public ActionResult UserCode()
+        {
+            var userId = User.Identity.GetUserId();
+            var service = new CodeExampleServices(userId);
+
+            var userExampleList = service.GetAllExamplesByUserId(userId);
+
+            if(userExampleList == null)
+                return View();
+
+
+            return View(userExampleList);
+        }
+
         public ActionResult Details(int id)
         {
             var service = GetCodeExampleService();

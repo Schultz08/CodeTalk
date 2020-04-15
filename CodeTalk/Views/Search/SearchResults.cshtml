@@ -61,12 +61,10 @@
                         @Html.DisplayFor(modelItem => categoryDetail.CategoryName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => categoryDetail.CategoryDiscription)
+                        @Html.DisplayFor(modelItem => categoryDetail.CategoryDescription)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = categoryDetail.CategoryId }) |
-                        @Html.ActionLink("Details", "Details", new { id = categoryDetail.CategoryId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = categoryDetail.CategoryId })
+                        @Html.ActionLink("Details", "Details","Category", new { id = categoryDetail.CategoryId })
                     </td>
                 </tr>
             </table>
@@ -93,7 +91,7 @@
                         @Html.DisplayFor(modelItem => exampleDetail.UserName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.ExampleDiscription)
+                        @Html.DisplayFor(modelItem => exampleDetail.ExampleDescription)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => exampleDetail.InitialPost)
@@ -102,9 +100,7 @@
                         @Html.DisplayFor(modelItem => exampleDetail.EditedPost)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = exampleDetail.CodeExampleId }) |
-                        @Html.ActionLink("Details", "Details", new { id = exampleDetail.CodeExampleId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = exampleDetail.CodeExampleId })
+                        @Html.ActionLink("Details", "Details", "CodeExample", new { id = exampleDetail.CodeExampleId })
                     </td>
                 </tr>
             </table>
@@ -121,9 +117,7 @@
                         @Html.DisplayFor(modelItem => profileDetail.UserName)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = profileDetail.ProfileId }) |
-                        @Html.ActionLink("Details", "Details", new { id = profileDetail.ProfileId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = profileDetail.ProfileId })
+                        @Html.ActionLink("Details", "Index", "Profile", new { id = profileDetail.ProfileId })
                     </td>
                 </tr>
             </table>
@@ -131,6 +125,3 @@
     }
 }
 
-<!--
-</table>
-    -->

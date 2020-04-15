@@ -4,24 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>The code library</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("My Profile", "Index", "Profile")
-</p>
-<div>
-    @using (Html.BeginForm("DefualtSearch", "Search"))
-    {
-        <ul class="nav navbar-nav">
-            <li>
-                <input type="text" name="searchString" />
-                <input type="submit" value="Search" />
-            </li>
-            <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
-        </ul>
-    }
-</div>
 <table class="table">
     <tr>
         <th>
@@ -76,15 +60,25 @@
                 @Html.DisplayFor(modelItem => item.EditedPost)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CodeExampleId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CodeExampleId })
+                @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId })
             </td>
         </tr>
     }
 
 </table>
 
+<div>
+    @using (Html.BeginForm("DefualtSearch", "Search"))
+    {
+        <ul class="nav navbar-nav">
+            <li>
+                <input type="text" name="searchString" />
+                <input type="submit" value="Search" />
+            </li>
+            <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
+        </ul>
+    }
+</div>
 @if (TempData.ContainsKey("SaveResult"))
 {
 
