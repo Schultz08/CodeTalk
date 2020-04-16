@@ -9,11 +9,11 @@ namespace Models.Search
 {
     public class SearchFilter
     {
-        [Display(Name = "Profiles")]
+        [Display(Name = "UserNames")]
         public bool SearchProfile { get; set; }
-        [Display(Name = "Categories")]
+        [Display(Name = "Category Name")]
         public bool SearchCategory { get; set; }
-        [Display(Name = "Example Code Titles")]
+        [Display(Name = "Example Titles")]
         public bool SearchCodeExample { get; set; }
         [Display(Name = "Search")]
         public string SearchRequest { get; set; }

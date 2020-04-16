@@ -3,125 +3,160 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("My Profile", "Index", "Profile")
-</p>
-@*<tr>
-        <th>
-            @Html.DisplayNameFor(model => )
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProfileId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleDiscription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InitialPost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditedPost)
-        </th>
-        <th></th>
-    </tr>*@
-
-@foreach (var result in Model)
-{
-    foreach (var items in result as IEnumerable<object>)
-    {
-
-
-
-        if (items is Models.CategoryModels.CategoryDetail categoryDetail)
-        {
-
-            <table>
-
-                <tr>
-                    <td>
-                        @Html.HiddenFor(modelItem => categoryDetail.CategoryId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => categoryDetail.CategoryName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => categoryDetail.CategoryDescription)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details","Category", new { id = categoryDetail.CategoryId })
-                    </td>
-                </tr>
-            </table>
-        }
-        if (items is Models.CodeExampleModels.ExampleDetail exampleDetail)
-        {
-
-            <table>
-
-                <tr>
-                    <td>
-                        @Html.HiddenFor(modelItem => exampleDetail.CodeExampleId)
-                    </td>
-                    <td>
-                        @Html.HiddenFor(modelItem => exampleDetail.ProfileId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.CategoryId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.ExampleDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.InitialPost)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => exampleDetail.EditedPost)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", "CodeExample", new { id = exampleDetail.CodeExampleId })
-                    </td>
-                </tr>
-            </table>
-        }
-        if (items is Models.ProfileModels.ProfileDetail profileDetail)
-        {
-            <table>
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => profileDetail.ProfileId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => profileDetail.UserName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Index", "Profile", new { id = profileDetail.ProfileId })
-                    </td>
-                </tr>
-            </table>
-        }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
     }
-}
+
+    .wrapper {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        border: .2rem ridge black;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+    }
+
+    td {
+        color: #28a745;
+        border-top: 1px solid #2e2e2c;
+        padding: 1rem;
+    }
+
+    th {
+        color: #29b348;
+        border-top: none !important;
+        padding-bottom: .5rem;
+    }
+
+    h2 {
+        padding-left: 1rem;
+        padding-top: 0;
+        margin-bottom: 1rem;
+        margin-top: 1rem !important;
+    }
+
+    .links {
+        text-align: center;
+    }
+</style>
+
+<div class="wrapper">
+
+    @foreach (var result in Model)
+    {
+        int tableHeader = 0;
+        <table class="table-responsive-xl">
+            @foreach (var items in result as IEnumerable<object>)
+            {
+                if (items is Models.CategoryModels.CategoryDetail categoryDetail)
+                {
+                    if (tableHeader == 0)
+                    {
+                        tableHeader += 1;
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(modelItem => categoryDetail.CategoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => categoryDetail.CategoryDescription)
+                            </th>
+                        </tr>
+
+                    }
+
+                    @Html.HiddenFor(modelItem => categoryDetail.CategoryId)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => categoryDetail.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => categoryDetail.CategoryDescription)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Detail", "Category", new { id = categoryDetail.CategoryId }, htmlAttributes: new { @class = "btn btn-outline-success" })
+                        </td>
+                    </tr>
+                }
+
+                if (items is Models.CodeExampleModels.ExampleDetail exampleDetail)
+                {
+                    if (tableHeader == 0)
+                    {
+                        tableHeader += 1;
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.CategoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.ExampleDescription)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.InitialPost)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(modelItem => exampleDetail.EditedPost)
+                            </th>
+                        </tr>
+
+                    }
+                    <tr>
+                        @Html.HiddenFor(modelItem => exampleDetail.CodeExampleId)
+                        @Html.HiddenFor(modelItem => exampleDetail.ProfileId)
+                        <td>
+                            @Html.DisplayFor(modelItem => exampleDetail.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => exampleDetail.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => exampleDetail.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => exampleDetail.ExampleDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => exampleDetail.InitialPost)
+                        </td>
+                        <td>
+                            @if (exampleDetail.EditedPost == null)
+                            {
+                                @Html.Display("No changes")
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => exampleDetail.EditedPost)
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", "CodeExample", new { id = exampleDetail.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success" })
+                        </td>
+                    </tr>
+                }
+                if (items is Models.ProfileModels.ProfileDetail profileDetail)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => profileDetail.ProfileId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => profileDetail.UserName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Index", "Profile", new { id = profileDetail.ProfileId }, htmlAttributes: new { @class = "btn btn-outline-success" })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    }
+</div>
 

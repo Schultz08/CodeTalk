@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Models.Search;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +34,51 @@ namespace Services
             return MvcHtmlString.Create(postStr);
         }
     }
+    public class MakeDefaultCat
+    {
+        public void MakeACate()
+        {
+            //Temp fix for issue cascade issue
+            using (var context = new ApplicationDbContext())
+            {
+                var dService = new SearchService();
 
+                if (dService.QuickFix("Please") == null)
+                {
+                    var addDefault = new Category { CategoryName = "Please Re-Select Category", CategoryDescription = "The Category you had Select has been removed." };
+                    context.Categories.Add(addDefault);
+                    context.SaveChanges();
+                }
+            }
+        }
+    }
+    public class OnDelete
+    {
+        public void OnDeleteCategory(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var dService = new SearchService();
+
+                var defaultCategory = dService.QuickFix("Please");
+                if (defaultCategory == null)
+                {
+                    var service = new MakeDefaultCat();
+                    service.MakeACate();
+                    defaultCategory = dService.QuickFix("Please");
+                }
+                var query =
+                context
+                .CodeExamples
+                .Where(e => e.CategoryId == id).ToList();
+
+                foreach (var item in query)
+                {
+                    item.CategoryId = defaultCategory.CategoryId;
+                }
+                context.SaveChanges();
+            }
+        }
+    }
 
 }

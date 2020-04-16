@@ -55,12 +55,10 @@ namespace CodeTalk.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ExampleCreate model)
         {
-
             var service = GetCodeExampleService();
 
             if(service.CreateExample(model))
             {
-                TempData["SaveResult"] = "Your Example was created";
                 return RedirectToAction(nameof(Index));
             }
 

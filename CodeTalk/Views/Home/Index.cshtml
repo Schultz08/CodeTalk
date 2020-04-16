@@ -1,31 +1,77 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
 
+    .jumbotron {
+        margin-top: 3rem;
+        background-color: #1c1c1b;
+        border: .2rem ridge black;
+        border-radius: 10px;
+    }
+
+    .row {
+        margin-top: 2rem;
+    }
+
+    .linkbreak {
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: inset 1px #28a745;
+        width: 20rem;
+        margin-top: 2rem;
+    }
+
+    h1 {
+        color: #29b348;
+    }
+
+    h4 {
+        color: #29b348;
+    }
+</style>
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <h1>Welcome to my Project!</h1>
+    <p class="lead">This web application was build by yours truly! Jess Schultz.<br /> My inspration for this site is to give users the ability to share their amazing code creations! So others may learn new and exciting ways to utlize C#, or maybe even start to learn C#.</p>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <hr class="linkbreak" />
+    <div class="row">
+        <div class="col-md-4">
+            <h4>What you can currently do!</h4>
+
+            <ul>
+                <li>Make an account.</li>
+                <li>Create and update your profile.</li>
+                <li>Create, update, and Delete Categories.</li>
+                <li>Create, update, and manage Your posted Code.</li>
+                <li>Search by Category name, Profile Username, and Example Title.</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h4>What I am working to add</h4>
+            <ol>
+                <li>Upload files!</li>
+                <li>Add some sort of ratings</li>
+                <li>Multiple optional input fields for code Examples</li>
+                <li>More Ways to search!</li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <h4>Interested!?</h4>
+            <p>
+                Interested in the project?<br />
+                how it all works?<br />
+                checkout my <a href="https://github.com/Schultz08/CodeTalk">GitHub!</a>
+            </p>
+            <hr />
+            <p>You can also checkout my protfolio!</p>
+
+        </div>
     </div>
 </div>

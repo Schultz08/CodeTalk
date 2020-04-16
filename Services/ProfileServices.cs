@@ -47,6 +47,10 @@ namespace Services
         public ProfileDetail GetById(string id)
         {
             var entity = _context.Profiles.Find(id);
+
+            if (entity == null)
+                return null;
+
             var model = new ProfileDetail
             {
                 ProfileId = _userId,
@@ -71,7 +75,6 @@ namespace Services
             query.FirstName = model.FirstName;
             query.LastName = model.LastName;
             query.Email = model.Email;
-
             return _context.SaveChanges() == 1;
         }
 
@@ -83,7 +86,7 @@ namespace Services
             if (entity == null)
                 return false;
 
-           _context.Users.Remove(entity);
+            _context.Users.Remove(entity);
 
             return _context.SaveChanges() == 1;
 

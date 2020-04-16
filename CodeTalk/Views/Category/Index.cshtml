@@ -3,64 +3,93 @@
 @{
     ViewBag.Title = "Category";
 }
+    <style>
+        body {
+            background-color: #2e2e2d;
+            color: #28a745;
+            padding: 0;
+        }
 
-<h2>All Categories</h2>
+        .wrapper {
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+            border: .2rem ridge black;
+            background-color: #1c1c1b;
+            border-radius: 10px;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div>
-    @using (Html.BeginForm("DefualtSearch", "Search"))
-    {
-        <ul class="nav navbar-nav">
-            <li>
-                <input type="text" name="searchString" />
-                <input type="submit" value="Search" />
-            </li>
-            <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
-        </ul>
-    }
-</div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryDescription)
-        </th>
-    </tr>
+        td {
+            color: #28a745;
+            border-top: 1px solid #2e2e2c;
+            padding: 1rem;
+        }
 
-    @foreach (var item in Model)
-    {
+        th {
+            color: #29b348;
+            border-top: none !important;
+            padding-bottom: .5rem;
+        }
+
+        #listItem {
+            font-size: .9rem;
+            margin-right: .5rem;
+        }
+
+        h2 {
+            padding-left: 1rem;
+            padding-top: 0;
+            margin-bottom: 1rem;
+            margin-top: 1rem!important;
+        }
+
+        .links {
+            text-align: center;
+        }
+    </style>
+<div class="wrapper">
+    <h2 style="margin-top:3rem">All Categories</h2>
+    <table class="table-responsive-xl">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @try
-                {
-                    @item.CategoryDescription.Substring(0, 10)
-                }
-                catch
-                {
-                    @Html.DisplayFor(modelItem => item.CategoryDescription)
-
-                }
-
-
-
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                @Html.ActionLink("Details", "Detail", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </th>
+            <th class="links">
+                    @Html.ActionLink("Create New", "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-success"})
+            </th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @try
+                    {
+                        @item.CategoryDescription.Substring(0, 10)
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.CategoryDescription)
 
+                    }
+                </td>
+                <td>
+                    <div class="d-inline-flex">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" })
+                        @Html.ActionLink("Details", "Detail", new { id = item.CategoryId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" })
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
 
 @if (TempData.ContainsKey("SaveResult"))
 {

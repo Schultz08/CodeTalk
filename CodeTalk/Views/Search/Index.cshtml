@@ -4,13 +4,44 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
 
+    .form-horizontal {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+        border: .2rem ridge black;
+    }
 
-@using (Html.BeginForm()) 
+    label {
+        color: #29b348;
+    }
+
+    .footerLink {
+        padding-bottom: 1rem;
+        margin-left: 1rem;
+    }
+
+    .btn-outline-success {
+        width: 5rem;
+    }
+
+    h4 {
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+</style>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SearchFilter</h4>
         <hr />
@@ -55,15 +86,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Search!" class="btn btn-default" />
+                <input type="submit" value="Search!" class="btn btn-outline-success" />
             </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "nav-link"})
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

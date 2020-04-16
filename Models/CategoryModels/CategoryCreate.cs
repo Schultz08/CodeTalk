@@ -9,6 +9,7 @@ namespace Models.CategoryModels
 {
     public class CategoryCreate
     {
+
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
         

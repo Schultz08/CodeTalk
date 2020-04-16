@@ -3,15 +3,40 @@
 @{
     ViewBag.Title = "Profile";
 }
+<style>
 
-<div>
-    <h4>Hello @Html.DisplayFor(model => model.FirstName)!</h4>  
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
+    dt {
+        color: #29b348;
+        font-size: 1.3rem;
+    }
+    h3 {
+        color: #29b348;
+        margin-left: 1rem;
+    }
+    .wrapper {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        border: .2rem ridge black;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+    }
+
+    .dl-horizontal{
+        margin-left: 1rem;
+    }
+</style>
+<div class="wrapper">
+    <h3>Hello @Html.DisplayFor(model => model.FirstName)!</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.UserName)
         </dd>
@@ -40,21 +65,11 @@
         </dd>
 
     </dl>
-</div>
-    <div>
-        @using (Html.BeginForm("DefualtSearch", "Search"))
-        {
-            <ul class="nav navbar-nav">
-                <li>
-                    <input type="text" name="searchString" />
-                    <input type="submit" value="Search" />
-                </li>
-                <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
-            </ul>
-        }
-    </div>
-<p>
-    @Html.ActionLink("Home Page", "Index", "Home") |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProfileId }) |
-    @Html.ActionLink("Delete Account", "Delete", "Account") 
+<p class="form-inline">
+    @Html.ActionLink("Home Page", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" }) |
+    @Html.ActionLink("Edit", "Edit", "Profile", new { id = Model.ProfileId}, htmlAttributes: new { @class = "nav-link"}) |
+    @Html.ActionLink("Delete Account", "Delete", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })
 </p>
+</div>
+
+ 

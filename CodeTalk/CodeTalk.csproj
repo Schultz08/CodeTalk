@@ -184,6 +184,7 @@
     <Compile Include="Controllers\CodeExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PortController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
@@ -367,14 +368,15 @@
     <Content Include="Views\CodeExample\Delete.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\SearchResults.cshtml" />
-    <Content Include="Views\Upload\UploadFile.cshtml" />
     <Content Include="Views\CodeExample\Details.cshtml" />
     <Content Include="Views\Category\Detail.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\CodeExample\UserCode.cshtml" />
+    <Content Include="Views\Port\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

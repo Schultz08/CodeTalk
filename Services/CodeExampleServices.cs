@@ -19,7 +19,7 @@ namespace Services
 
         public bool CreateExample(ExampleCreate model)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var entity = new CodeExample
                 {
@@ -34,6 +34,7 @@ namespace Services
                 };
 
                 context.CodeExamples.Add(entity);
+
                 return context.SaveChanges() == 1;
             }
         }
@@ -52,9 +53,9 @@ namespace Services
                 return true;
             }
         }
-        public ExampleDetail GetById (int id)
+        public ExampleDetail GetById(int id)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var entity =
                     context
@@ -81,14 +82,14 @@ namespace Services
 
         public IEnumerable<ExampleDetail> GetAllExamples()
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
-                var query = 
+                var query =
                     context
                     .CodeExamples
                     .Where(j => j.CodeExampleId == j.CodeExampleId)
                     .Select
-                    ( j => new ExampleDetail
+                    (j => new ExampleDetail
                     {
                         CodeExampleId = j.CodeExampleId,
                         ProfileId = j.ProfileId,
@@ -135,9 +136,9 @@ namespace Services
             }
         }
         public bool UpdateExample(ExampleUpdate model)
+        {
+            using (var context = new ApplicationDbContext())
             {
-                using(var context = new ApplicationDbContext())
-                {
                 var entity =
                     context
                     .CodeExamples
@@ -152,16 +153,17 @@ namespace Services
                 entity.EditedPost = DateTimeOffset.Now;
 
                 return context.SaveChanges() == 1;
-                }
             }
+        }
 
         public bool DeleteExample(int id)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
-                 var entity = context.CodeExamples.Single(j => j.CodeExampleId == id);
+                var entity = context.CodeExamples.Single(j => j.CodeExampleId == id);
                 if (entity == null)
                     return false;
+                var service = new OnDelete();
 
                 context.CodeExamples.Remove(entity);
 

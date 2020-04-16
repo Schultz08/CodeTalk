@@ -11,8 +11,12 @@ namespace Services
 {
     public class CategoryServices
     {
+
         public bool CreateCategory(CategoryCreate model)
         {
+            if (model.CategoryName.Contains("Please"))
+                return false;
+
             Category entity = new Category
             {
                 CategoryName = model.CategoryName,
@@ -57,7 +61,7 @@ namespace Services
         }
         public CategoryDetail GetById(int id)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var entity = context.Categories.Find(id);
 
@@ -90,14 +94,25 @@ namespace Services
                 return context.SaveChanges() == 1;
             }
         }
-        
+
         public bool DeleteCategory(int id)
         {
             using (var context = new ApplicationDbContext())
             {
                 var content = context.Categories.Find(id);
-                context.Categories.Remove(content);
-                return context.SaveChanges() == 1;
+                var service = new OnDelete();
+
+                try
+                {
+                    service.OnDeleteCategory(id);
+                    context.Categories.Remove(content);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
     }

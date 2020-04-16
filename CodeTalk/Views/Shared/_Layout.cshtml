@@ -3,39 +3,75 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - CodeTalk</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        #navlinks:hover {
+            color: #fc0303 !important;
+        }
 
+        .nav-link:hover {
+            color: #fc0303 !important;
+        }
+
+        .nav-link {
+            color: #28a745 !important;
+        }
+
+        .navbar-brand {
+            color: #28a745 !important;
+        }
+
+        .navbar-brand:hover {
+            color: #fc0303 !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("My Profile", "Index", "Profile")</li>
-                    <li>@Html.ActionLink("My Code", "UserCode", "CodeExample")</li>
-                    <li>@Html.ActionLink("Code Library", "Index", "CodeExample")</li>
-                    <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("CodeTalk", "Index", "Home", new { }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse" id="navbarText">
+                <ul class="nav navbar-nav mr-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("My Profile", "Index", "Profile", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("My Code", "UserCode", "CodeExample", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Categories", "Index", "Category", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    }
+                    <li>@Html.ActionLink("Code Library", "Index", "CodeExample", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
+
+                @using (Html.BeginForm("DefualtSearch", "Search"))
+                {
+                    <ul class="nav navbar-nav navbar-right mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Filter", "Index", "Search", new { }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="searchString">
+                        </li>
+
+                        <li class="nav-item">
+                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - CodeTalk</p>
         </footer>
     </div>
 

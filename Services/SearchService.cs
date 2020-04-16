@@ -18,66 +18,65 @@ namespace Services
 
         public void SearchProfile(string str)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
 
-            var query =
-                context
-                .Profiles
-                .Where(e => e.UserName.Contains(str))
-                .Select(profile => new ProfileDetail
-                {
-                    ProfileId = profile.ProfileId,
-                    UserName = profile.UserName,
-                }).ToList();
+                var query =
+                    context
+                    .Profiles
+                    .Where(e => e.UserName.Contains(str))
+                    .Select(profile => new ProfileDetail
+                    {
+                        ProfileId = profile.ProfileId,
+                        UserName = profile.UserName,
+                    }).ToList();
 
-            _result.Add(query);
+                _result.Add(query);
             }
         }
 
-        public void SearchCategory(string str)
+        public void SearchCategoryByName(string str)
         {
             using (var context = new ApplicationDbContext())
             {
 
-            var query =
-                context
-                .Categories
-                .Where(e => e.CategoryName.Contains(str))
-                .Select(category => new CategoryDetail
-                {
-                    CategoryId = category.CategoryId,
-                    CategoryName = category.CategoryName,
-                    CategoryDescription = category.CategoryDescription
-                }).ToList();
+                var query =
+                    context
+                    .Categories
+                    .Where(e => e.CategoryName.Contains(str))
+                    .Select(e => new CategoryDetail
+                    {
+                        CategoryId = e.CategoryId,
+                        CategoryName = e.CategoryName,
+                        CategoryDescription = e.CategoryDescription
+                    }).ToList();
 
-            _result.Add(query);
-
+                _result.Add(query);
             }
         }
-        public void SearchExample(string str)
+        public void SearchExampleByTitle(string str)
         {
             using (var context = new ApplicationDbContext())
             {
 
-            var query =
-                context
-                .CodeExamples
-                .Where(e => e.Title.Contains(str))
-                .Select(example => new ExampleDetail
-                {
-                    CodeExampleId = example.CodeExampleId,
-                    ProfileId = example.ProfileId,
-                    CategoryId = example.CategoryId,
-                    CategoryName = example.Category.CategoryName,
-                    UserName = example.Profile.UserName,
-                    Title = example.Title,
-                    ExampleDescription = example.ExampleDescription,
-                    InitialPost = example.InitialPost,
-                    EditedPost = example.EditedPost
-                }).ToList();
+                var query =
+                    context
+                    .CodeExamples
+                    .Where(e => e.Title.Contains(str))
+                    .Select(example => new ExampleDetail
+                    {
+                        CodeExampleId = example.CodeExampleId,
+                        ProfileId = example.ProfileId,
+                        CategoryId = example.CategoryId,
+                        CategoryName = example.Category.CategoryName,
+                        UserName = example.Profile.UserName,
+                        Title = example.Title,
+                        ExampleDescription = example.ExampleDescription,
+                        InitialPost = example.InitialPost,
+                        EditedPost = example.EditedPost
+                    }).ToList();
 
-            _result.Add(query);
+                _result.Add(query);
             }
         }
 
@@ -91,15 +90,39 @@ namespace Services
             }
             if (model.SearchCategory == true)
             {
-                list += SearchCategory;
+                list += SearchCategoryByName;
             }
             if (model.SearchCodeExample == true)
             {
-                list += SearchExample;
+                list += SearchExampleByTitle;
             }
             list.Invoke(model.SearchRequest);
 
             return _result;
+        }
+
+
+
+        //Temp Data quick fix
+        public Category QuickFix(string str)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                Category query = null;
+
+                try
+                {
+                    query =
+                    context
+                    .Categories
+                    .Single(e => e.CategoryName.Contains(str));
+                    return query;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
     }
 }

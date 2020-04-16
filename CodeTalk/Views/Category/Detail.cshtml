@@ -3,11 +3,44 @@
 @{
     ViewBag.Title = "Detail";
 }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
 
-<h2>Detail</h2>
+    dt {
+        color: #29b348;
+        font-size: 1.3rem;
+    }
 
-<div>
-    <h4>CategoryDetail</h4>
+    h4 {
+        color: #29b348;
+        margin-left: 1rem;
+    }
+
+    .wrapper {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        border: .2rem ridge black;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+    }
+
+    .dl-horizontal {
+        margin-left: 1rem;
+    }
+
+    .footerLinks {
+        padding-top: .5rem;
+        padding-left: 1rem;
+        padding-bottom: .5rem;
+    }
+</style>
+
+<div class="wrapper">
+    <h4>Category Details</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -36,8 +69,8 @@
         </dd>
 
     </dl>
+    <p class="footerLinks">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }, htmlAttributes: new { @class = "btn btn-outline-success" })
+        @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-success" })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

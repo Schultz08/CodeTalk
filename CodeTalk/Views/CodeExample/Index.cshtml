@@ -3,82 +3,109 @@
 @{
     ViewBag.Title = "Index";
 }
+    <style>
+        body {
+            background-color: #2e2e2d;
+            color: #28a745;
+            padding: 0;
+        }
 
-<h2>The code library</h2>
+        .wrapper {
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+            border: .2rem ridge black;
+            background-color: #1c1c1b;
+            border-radius: 10px;
+        }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InitialPost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditedPost)
-        </th>
-        <th></th>
-    </tr>
+        td {
+            color: #28a745;
+            border-top: 1px solid #2e2e2c;
+            padding: 1rem;
+        }
 
-    @foreach (var item in Model)
-    {
+        th {
+            color: #29b348;
+            border-top: none !important;
+            padding-bottom: .5rem;
+        }
+
+        #listItem {
+            font-size: .9rem;
+            margin-right: .5rem;
+        }
+
+        h2 {
+            padding-left: 1rem;
+            padding-top: .5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+<div class="wrapper">
+
+    <h2>The code library</h2>
+    <table class="table-responsive-xl">
         <tr>
-                @Html.HiddenFor(modelItem => item.CodeExampleId)
-            <td>
-                @Html.HiddenFor(modelItem => item.ProfileId)
-                @Html.DisplayFor(modelitem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.HiddenFor(modelItem => item.CategoryId)
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExampleCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExampleDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InitialPost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EditedPost)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExampleCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExampleDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditedPost)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @Html.HiddenFor(modelItem => item.CodeExampleId)
+                <td>
+                    @Html.HiddenFor(modelItem => item.ProfileId)
+                    @Html.DisplayFor(modelitem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.HiddenFor(modelItem => item.CategoryId)
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExampleCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExampleDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditedPost)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success", id ="listItem"})
+                </td>
+            </tr>
+        }
 
-<div>
-    @using (Html.BeginForm("DefualtSearch", "Search"))
-    {
-        <ul class="nav navbar-nav">
-            <li>
-                <input type="text" name="searchString" />
-                <input type="submit" value="Search" />
-            </li>
-            <li>@Html.ActionLink("Advance Search", "Index", "Search")</li>
-        </ul>
-    }
+    </table>
 </div>
+
 @if (TempData.ContainsKey("SaveResult"))
 {
 

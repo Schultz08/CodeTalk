@@ -3,7 +3,35 @@
 @{
     ViewBag.Title = "Edit";
 }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
+    .form-horizontal {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+        border: .2rem ridge black;
+    }
+    label {
+        color: #29b348;
+    }
 
+    .footerLink {
+        padding-bottom: 1rem;
+        margin-left: 1rem;
+    }
+    .btn-outline-success{
+        width: 5rem;
+    }
+    h4{
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+</style>
 
 @using (Html.BeginForm())
 {
@@ -13,7 +41,7 @@
         <h4>Update your Profile!</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        @Html.HiddenFor(model => model.ProfileId)
         <div class="form-group">
             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -49,15 +77,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-info" />
+                <input type="submit" value="Save" class="btn btn-outline-success" />
             </div>
         </div>
+<div class="footerLink">
+    @Html.ActionLink("Back to My Profile", "Index", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+</div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to My Profile", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

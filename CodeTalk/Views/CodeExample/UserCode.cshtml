@@ -3,67 +3,111 @@
 @{
     ViewBag.Title = "UserCode";
 }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
 
-<h2>Your Posted Code</h2>
+    .wrapper {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        border: .2rem ridge black;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+    }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExampleDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InitialPost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditedPost)
-        </th>
-        <th></th>
-    </tr>
+    td {
+        color: #28a745;
+        border-top: 1px solid #2e2e2c;
+        padding: 1rem;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExampleCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExampleDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InitialPost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EditedPost)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.CodeExampleId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodeExampleId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodeExampleId })
-        </td>
-    </tr>
-}
+    th {
+        color: #29b348;
+        border-top: none !important;
+        padding-bottom: .5rem;
+    }
 
-</table>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    #listItem {
+        font-size: .9rem;
+        margin-right: .5rem;
+    }
+    h2{
+        padding-left: 1rem;
+        padding-top: .5rem;
+        margin-bottom: 1rem;
+    }
+    .links {
+        text-align:center;
+    }
+</style>
+<div class="wrapper">
+
+    <h2>Your Posted Code</h2>
+    <table class="table-responsive-xl">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExampleCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExampleDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditedPost)
+            </th>
+            <th class=" links">
+                @Html.ActionLink("Create New", "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-success",})
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExampleCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExampleDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditedPost)
+                </td>
+
+                <td>
+                    <div class="d-inline-flex">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success", id = "listItem" })
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

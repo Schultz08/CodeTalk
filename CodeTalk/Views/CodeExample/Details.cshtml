@@ -3,8 +3,41 @@
 @{
     ViewBag.Title = Model.Title;
 }
+<style>
+    body {
+        background-color: #2e2e2d;
+        color: #28a745;
+        padding: 0;
+    }
 
-<div>
+    dt {
+        color: #29b348;
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        color: #29b348;
+        margin-left: 1rem;
+    }
+
+    .wrapper {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        border: .2rem ridge black;
+        background-color: #1c1c1b;
+        border-radius: 10px;
+    }
+
+    .dl-horizontal {
+        margin-left: 1rem;
+    }
+    .footerLinks{
+        padding-top: .5rem;
+        padding-left: 1rem;
+        padding-bottom: .5rem;
+    }
+</style>
+<div class=" wrapper">
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -56,19 +89,21 @@
         </dd>
 
     </dl>
+    @if (Model.ProfileId == (string)Session["UserId"])
+    {
+        <p class="footerLinks">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CodeExampleId }, htmlAttributes: new { @class = "btn btn-outline-success" })
+            @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-outline-success" })
+        </p>
+    }
+    else
+    {
+        <p class=" footerLinks">
+            @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-outline-success" })
+        </p>
+
+    }
 </div>
 
 
-@if (Model.ProfileId == (string)Session["UserId"])
-{
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CodeExampleId }) |
-    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
-</p>
-}
-else
-{
-    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
-
-}
 

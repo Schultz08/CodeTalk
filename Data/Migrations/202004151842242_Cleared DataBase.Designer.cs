@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddedTitletoCodeExampleandAnnotations : IMigrationMetadata
+    public sealed partial class ClearedDataBase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedTitletoCodeExampleandAnnotations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ClearedDataBase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004041504162_Added Title to CodeExample and Annotations"; }
+            get { return "202004151842242_Cleared DataBase"; }
         }
         
         string IMigrationMetadata.Source
