@@ -38,8 +38,7 @@
         }
 
         .wrapper {
-            margin-top: 3rem;
-            margin-bottom: 5rem;
+            margin-top: 10rem;
         }
 
         .skillsContent {
@@ -48,68 +47,140 @@
             background-color: #1c1c1b;
             border-radius: 10px;
         }
-        .skillWrapper{
-            margin-left: 7rem!important;
-            position:relative!important;
+
+        .skillWrapper {
+            margin-top: 3rem;
+        }
+
+        .header {
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 100%;
+        }
+
+        .headerImg {
+            background-image: url(../../Content/Images/JessSchultz3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        hr {
+            border-top: none;
+            border-right: none;
+            border-bottom: 2px solid #28a745;
+            border-left: none;
+            width: 10rem;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             @Html.ActionLink("Jess Schultz", "Index", routeValues: null, htmlAttributes: new { @class = "navbar-brand" })
             <div class="navbar-collapse collapse" id="navbarText">
-                <ul class="nav navbar-nav mr-auto">
-                    <li>@Html.ActionLink("My Profile", "Index", "Profile", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("My Code", "UserCode", "CodeExample", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Categories", "Index", "Category", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                <ul class="nav navbar-nav float-right">
+                    <li><button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#contactMe">Contact Me</button></li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="wrapper">
+    <div class="wrapper container-fluid">
 
-        <div class="header">
-            <p>This is my header</p>
-        </div>
+        <div class="header container-fluid">
+            <div class="headerImg">
 
-    <div class="d-inline-flex skillWrapper">
-        <div class="col-md-3 skillsContent">
-            <h4>What you can currently do!</h4>
-
-            <ul>
-                <li>Make an account.</li>
-                <li>Create and update your profile.</li>
-                <li>Create, update, and Delete Categories.</li>
-                <li>Create, update, and manage Your posted Code.</li>
-                <li>Search by Category name, Profile Username, and Example Title.</li>
-            </ul>
-        </div>
-        <div class="col-md-3 skillsContent">
-            <h4>What I am working to add</h4>
-            <ol>
-                <li>Upload files!</li>
-                <li>Add some sort of ratings</li>
-                <li>Multiple optional input fields for code Examples</li>
-                <li>More Ways to search!</li>
-            </ol>
-        </div>
-        <div class="col-md-3 skillsContent">
-            <h4>Interested!?</h4>
+            </div>
             <p>
-                Interested in the project?<br />
-                how it all works?<br />
-                checkout my <a href="https://github.com/Schultz08/CodeTalk">GitHub!</a>
+                Dedicated and motivated to complete any task with the best quality in mind. With more than 5 years of
+                military experience. Through various training exercises in the military I have fine-tuned, attention to
+                detail, patients, and problems solving skills. I am looking to utilize these skills in Software Development
             </p>
-            <hr />
-            <p>You can also checkout my protfolio!</p>
-
         </div>
-    </div>
+
+        <hr />
+
+        <div class="d-inline-flex skillWrapper container-fluid">
+            <div class="col-md-3 skillsContent">
+                <h4>Technical Skills</h4>
+                <ul>
+                    <li>C#.</li>
+                    <li>GitHub</li>
+                    <li>Unit Testing</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>ASP.NET</li>
+                    <li>MVC</li>
+                </ul>
+            </div>
+            <div class="col-md-3 skillsContent">
+                <h4>Professional Skills</h4>
+                <ul>
+                    <li>Adaptable</li>
+                    <li>Dependable</li>
+                    <li>Time Management</li>
+                    <li>Proactive</li>
+                    <li> Problem Solver</li>
+                </ul>
+            </div>
+            <div class="col-md-3 skillsContent">
+                <h4>Education</h4>
+                <p>
+                    ​ElevenFifty Academy<br />
+                    Worked through a full-time, 12-week, C# BootCamp, Learning the Fundamentals of C#, Entity
+                    Framework, Razor, and Web.API.<br />
+                    Worked on Console Applications and building Web applications solo and in groups with other
+                    developers.
+                </p>
+            </div>
+        </div>
+    </div> <div class="modal fade" id="contactMe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contact Me</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="https://formspree.io/mnqdelln"
+                          method="POST">
+
+                        <div>
+                            <label class="formtext"></label>
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <br>
+                        <div>
+                            <label class="formtext"></label>
+                            <input type="text" name="_replyto" placeholder="Your Email">
+                        </div>
+                        <br>
+                        <div>
+                            <label class="formtext"></label>
+                            <textarea name="message" placeholder="Your Message"></textarea>
+                        </div>
+                        <br>
+                        <div>
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+                    Interested in the project?<br />
+                    how it all works?<br />
+                    checkout my <a href="https://github.com/Schultz08/CodeTalk">GitHub!</a>
